@@ -1,32 +1,18 @@
 .as-product {
 
 	.asp-inner{
-		 
 		.pro-img{
-			  &:after{
-			  		.transition(all, 0.5s, ease);
-					content:"";
-					width: 100%;
-					height: 100%;
-					background: fade(@as-dark, 60%);
-					position: absolute;
-					top: 0;
-					left: 0;
-					opacity: 0;
-				}
-			img{
-				 
+			&:after{
+		  		.transition(all, 0.5s, ease);
+			    content: "";
+			    width: 100%;
+			    height: 100%;
+			    background: rgba(0, 0, 0, 0.31);
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    opacity: 0;
 			}
-			.preview-image{
-				
-				.product-hover-img {
-				 	
-					img {
-						 
-					}
-				}
-			}
-			 
 		}
 
 		.pro-action{
@@ -37,76 +23,33 @@
 				height: 50px;
 				text-align: center;
 				.transition(all, 0.5s, ease);
-				
-				.add_to_wishlist{
-					width: 40px;
-					height: 40px;
-					border-radius: 0;
-					position: relative;
-					top: auto;
-					right: auto;
-					text-align: center;
-					z-index: 9;
-					line-height: 40px;
-					display: inline-block;
-					background: @as-light;
-					vertical-align: middle;
-					.transition(all, 0.5s, ease);
-					margin-left: 0;
-					color: @as-theme;
-					font-size: @as-font-size * 2 - 8;
-					
-					span{
+				.btn-cart {
+					span {
 						display: none;
 					}
-					&:hover{
-						background: @as-theme;
-						color: @as-light;
-						border: 1px solid @as-theme;
-						color: @as-light;
-						
-					}
 				}
-				a.btn-cart{
-					display: inline-block;
-					margin: 0;
-					padding: 0;
-					vertical-align: middle;
-				}
-				.button.btn-cart{
-					width: 40px;
-					height: 40px;
-					border-radius: 0;
-					position: relative;
-					top: auto;
-					right: auto;
-					text-align: center;
-					z-index: 9;
-					line-height: 45px;
-					display: inline-block;
-					background: @as-light;
-					border: 1px solid @as-light;
-					vertical-align: middle;
-					padding: 0;
-					.transition(all, 0.5s, ease);
-					.fa{
-						margin-left: 0;
-						color: @as-theme;
-						font-size: @as-font-size * 2 - 8;
-						display: block;
-					}
-					span{
-						display: none;
-					}
-					&:hover{
-						background: @as-theme;
-						color: @as-theme;
-						border: 1px solid @as-theme;
-						.fa{
-							color: @as-light;
-						}
-					}
-					
+				.btn-cart,
+				.btn {
+				    width: 40px;
+				    height: 40px;
+				    border-radius: 0;
+				    position: relative;
+				    top: auto;
+				    right: auto;
+				    text-align: center;
+				    z-index: 9;
+				    line-height: 37px;
+				    display: inline-block;
+				    background: #ffffff;
+				    border: 1px solid #ffffff;
+				    vertical-align: middle;
+				    padding: 0;
+				    .fa {
+				    	display: inline-block;
+				    	vertical-align: middle;
+				    	margin: 0;
+				    	font-size: 15px;
+				    }
 				}
 			}
 			.oe_subdescription{
@@ -114,71 +57,8 @@
 			}
 
 		.pro-info{
-			width: 100%;
-			float: left;
 			text-align: left;
-			padding: 10px 0 0 0;
-			h3{
-				font-size: @as-font-size;
-				font-weight: 300;
-				margin: 0;
-				padding: 0 0 10px;
-				white-space: nowrap;
-				width: 100%;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				strong{
-					font-weight: 600;
-				}
-				a{
-					color:darken(@as-body, 5%); 
-				}
-			}
-			.product_price{
-				width: 100%;
-				float: left;
-				font-size: @as-font-size;
-				position: relative;
-				b{
-					font-weight: 600;
-				}
-				.text-danger{
-					color: #d40707; 
-				}
-			}
-			.o_rating_card{
-				width: 100%;
-				display: inline-block;
-				vertical-align: top;
-				text-align: left;
-				margin-top: 5px;
-				float: right;
-				.well{
-					float: none;
-					text-align: left;
-				}
-				.rating{
-					float: none;
-					.o_rating_star_card{
-						float: none;
-						margin: 0;
-						.stars {
-							margin: 0;
-							.fa{
-								color: @as-theme;
-								font-size: @as-font-size-base + 1;
-								margin: 0;
-							}
-						}
-					}
-				}
-				.fa-user{
-					display: none;
-				}
-				.popover{
-					display: none !important;
-				}
-			}
+
 		}
 		&:hover{
 			.pro-action{
@@ -188,21 +68,14 @@
 	}
 	&:hover{
 		.asp-inner{
-			.pro-info{
-				h3{
-					a{
-						color:@as-theme;
-					}
-				}
-			}
 			.pro-action {
 				top: 100px;
 			}
 			.pro-img {
 				&:after{
-						z-index: 9 !important;	
-						opacity: 1;
-					}
+					z-index: 9 !important;	
+					opacity: 1;
+				}
 			}
 			.preview-image{
 				.product-hover-img{
@@ -220,29 +93,12 @@
 ------------------*/
 
 #products_grid{
-	.as-product-list {
-		letter-spacing: -0.31em;
-		.col-sm-6{
-			float: none;
-			display: inline-block;
-			vertical-align: top;
-			letter-spacing: normal;
-			@media (max-width:767px){
-				width: 50%;
-			}
-			@media (max-width:479px){
-				width: 100%;
-			}
-		}
-	}
 	&.list-view-box,
 	.oe_list{
 		border:none;
 		padding-left: 0;
 		.as-product{
 			.pro-img{
-				width: 31%;
-				float: left;
 				background: darken(@as-light, 4%);
 			}
 			.pro-action{
@@ -253,63 +109,27 @@
 				bottom: auto;
 				top: auto;
 				height: auto;
-				a{
-					padding: 0;
-					margin-right: 8px;
-					vertical-align: middle;
-					.button{
-						width: auto;
-						background: @as-theme;
-						color: @as-light;
-						padding: 0 15px;
-						line-height: 30px;
-						span{
-							display: inline-block;
-							margin-right: 5px;
-							line-height: normal;
-							vertical-align: middle;
-						}
-						i{
-							display: inline-block;
-							color: @as-light;
-							vertical-align: middle;
-						}
-						&:hover{
-							background: @as-dark;
-							border: 1px solid @as-dark;
-						}
+				.btn-cart {
+					width: auto;
+					span {
+						display: inline-block;
+					}
+					.fa {
+						display: none;
 					}
 				}
-				.add_to_wishlist{
-					width: 40px;
-					position: relative;
-					top: 0;
-					left: 0;
-					text-align: center;
-					z-index: 9;
-					padding: 0;
-					display: inline-block;
-					vertical-align: middle;
-					height: 40px;
-					line-height: 40px;
-					background: @as-theme;
-					color: @as-light;
-					border: 1px solid @as-theme;
-					font-size: 18px;
-					color: @as-light;
-				
-					&:hover{
-						background: @as-dark;
-						border: 1px solid @as-dark;
+				.btn-cart,
+				.btn {
+					background: #323232;
+					color: #fff;
+					border:1px solid #323232;
+					&:hover {
+						background:#fff;
+						color: #323232;
 					}
 				}
 			}
 			.pro-info{
-				width: 69%;
-				float: left;
-				padding:0 20px;
-				background: transparent;
-				text-align: left;
 				.product_price{
 					width: 100%;
 				}
@@ -325,13 +145,6 @@
 			}
 			&:hover{
 				.asp-inner{
-					.pro-info{
-						h3{
-							a{
-								color:@as-theme;
-							}
-						}
-					}
 					.pro-action {
 						top: auto;
 					}

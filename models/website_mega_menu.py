@@ -27,4 +27,4 @@ class website_menu(Model):
     
     is_mega_menu=fields.Boolean("Mega Menu")
     content_id=fields.Many2one("megamenu.content","Content")
-    parent_id=fields.Many2one('website.menu', 'Parent Menu', select=True, ondelete="cascade",domain=[('is_mega_menu','=',False)])
+    parent_id=fields.Many2one('website.menu', 'Parent Menu', index=True, ondelete="cascade",domain=[('is_mega_menu','=',False)])

@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from odoo import api, fields, models
+from odoo import api, fields, models, tools, _
+from odoo.addons.http_routing.models.ir_http import slugify
+from odoo.http import request
+import datetime
+import math
 
 class website(models.Model):
 
@@ -85,3 +89,28 @@ class ProductTemplate(models.Model):
     
     hover_image = fields.Binary("Hover Image")
 
+    def _calculate_rating(self, product_id):
+        records = self.env["product.template"].sudo().search([('id', '=', product_id)])
+        domain = [('res_model', '=', "product.template"), ('res_id', 'in', records.ids), ('consumed', '=', True)]
+        ratings = self.env['rating.rating'].search(domain, order="id desc", limit=100)
+        domdate = domain
+        rating_stats = self.env['rating.rating'].read_group(domdate, [], ['rating'])        
+        total = sum(st['rating_count'] for st in rating_stats)
+        total_rating = sum(st['rating'] *st['rating_count']  for st in rating_stats)
+        if total:
+            return ((total_rating)/total)
+        else:
+            return 0
+            
+    @api.model
+    def get_average_rating(self):
+        for data in self:
+            avg_rate = self._calculate_rating(self.id)
+            if avg_rate>0:
+                val_integer = math.floor(avg_rate)
+                val_decimal = avg_rate - val_integer
+                val_ext     = 5 - (val_integer+math.ceil(val_decimal))             
+                data = { 'val': avg_rate, 'val_integer' : val_integer, 'val_decimal' : val_decimal ,'empty_star' : val_ext,}
+            else:
+                data = { 'val': 0, 'val_integer' : 0, 'val_decimal' : 0 ,'empty_star' : 5}            
+            return data

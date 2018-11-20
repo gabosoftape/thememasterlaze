@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates xml:space="preserve">
 
-<t t-name="theme_watch.product_slider_block">
+<t t-name="theme_laze.product_slider_block">
 
     <div class="modal" contenteditable="False" contentEditable="false" backdrop="false" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:2001">
         <div class="modal-dialog">
@@ -91,7 +91,7 @@
 
 </t>
 
-<t t-name="theme_watch.change_progress_modal">
+<t t-name="theme_laze.change_progress_modal">
 
     <div class="modal" contenteditable="False" contentEditable="false" backdrop="false" tabindex="1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:2001">
         <div class="modal-dialog">

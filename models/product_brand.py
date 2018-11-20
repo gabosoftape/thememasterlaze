@@ -4,7 +4,7 @@ from odoo import models, fields, api
 class ProductBrand(models.Model):
     _name = 'product.brand'
 
-    name = fields.Char('Brand Name', required=True)
+    name = fields.Char('Brand Name', required=True,translate=True)
     description = fields.Text('Description', translate=True)
     partner_id = fields.Many2one(
         'res.partner',

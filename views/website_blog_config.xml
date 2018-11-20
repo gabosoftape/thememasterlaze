@@ -33,6 +33,6 @@
 			</field>
 		</record>
 
-            <menuitem id="menu_action_blog_configure" parent="website.menu_website_configuration"
+            <menuitem id="menu_action_blog_configure" parent="menu_action_theme_laze"
             sequence="101" action="action_blog_configure" name="Blog Slider"/>  
 </odoo>

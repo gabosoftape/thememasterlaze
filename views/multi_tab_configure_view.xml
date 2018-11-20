@@ -46,8 +46,8 @@
             <field name="view_mode">tree,form</field>
         </record>   
 
-            <menuitem id="menu_action_multitab_configure" parent="website.menu_website_configuration"
+            <menuitem id="menu_action_multitab_configure" parent="menu_action_theme_laze"
             sequence="101" action="action_multitab_configure" name="Tab Configuration"/>  
-            <menuitem id="menu_action_collection_configure" parent="website.menu_website_configuration"
+            <menuitem id="menu_action_collection_configure" parent="menu_action_theme_laze"
             sequence="101" action="action_collection_configure" name="Slider Collection Configuration"/>       
 </odoo>

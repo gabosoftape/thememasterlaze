@@ -12,7 +12,6 @@
 		<link href="/theme_laze/static/src/less/as_custom.less" rel="stylesheet" type="text/less"/>			
 		<link href="/theme_laze/static/src/less/as_snippets.less" rel="stylesheet" type="text/less"/>			
 		<link href="/theme_laze/static/src/less/as_footer.less" rel="stylesheet" type="text/less"/>			
-		<link href="/theme_laze/static/src/less/as_ie.less" rel="stylesheet" type="text/less"/>
 		<link href="/theme_laze/static/src/css/owl.carousel.css" rel="stylesheet"/>
 		<link href="/theme_laze/static/src/css/magnific-popup.css" rel="stylesheet"/>
 		<link href="/theme_laze/static/src/less/as_products.less" rel="stylesheet" type="text/less"/>

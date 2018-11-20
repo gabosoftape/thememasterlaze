@@ -46,7 +46,9 @@
 	                <t t-foreach="brands" t-as="brand">
 						<a t-att-href="'/shop?brand=%s'%brand.id">
                         <div class="brand-img">
-                          <img t-att-src="website.image_url(brand,'logo')" t-att-title="brand.name" t-att-alt="brand.name" />
+                            <span class="brand_img_span">
+                                <img t-att-src="website.image_url(brand,'logo','300x300')" t-att-title="brand.name" t-att-alt="brand.name" />
+                            </span>
                         </div>
 						</a>
 					</t>

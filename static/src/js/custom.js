@@ -359,10 +359,11 @@ jQuery(document).ready(function($) {
 
 
     //Mobile menu
-    $(".mm-mega-menu > a").click(function() {
-        $(this).parent().toggleClass("open-mob-menu");
-        $(this).toggleClass("mob-menu-open");
-    });
+   $(".mm-mega-menu > a").click(function(event) {
+       event.preventDefault();
+       $(this).parent().toggleClass("open-mob-menu");
+       $(this).toggleClass("mob-menu-open");
+   });
 
     /*$(".hm-search .hm-search-hide").click(function() {
         $('body').toggleClass("hm-search-open");

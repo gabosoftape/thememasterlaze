@@ -96,56 +96,63 @@ odoo.define('theme_laze.editor_js',function(require) {
     });
 
     options.registry.theme_progressbar = options.Class.extend({
-    start : function () {
-        var self = this;
-        this.id = this.$target.attr("id");
-    },      
-    change_progress: function(type,value) {
-        var self = this;
-        self.$modal = $(qweb.render("theme_watch.change_progress_modal"));
-        self.$modal.appendTo('body');
-        self.$modal.modal();
-        var $progress_width = self.$modal.find("#progress-width"),
-        $sub_data = self.$modal.find("#sub_data");                                                          
-        $sub_data.on('click', function() {
-        var type = '';
-        //self.$target.attr("data-animation-width", $progress_width.val());
-        self.$target.attr('data-animate-width',$progress_width.val()+'%');
-        //self.$target.attr('style','width:'+$progress_width.val()+'%;');   
-        });         
-        
+        start : function () {
+            var self = this;
+            this.id = this.$target.attr("id");
+        },      
+        change_progress: function(type,value) {
+            var self = this;
+            if(type == 'reset'){
+                self.$modal = $(qweb.render("theme_laze.change_progress_modal"));
+                self.$modal.appendTo('body');
+                self.$modal.modal();
+                var $progress_width = self.$modal.find("#progress-width"),
+                $sub_data = self.$modal.find("#sub_data");                                                          
+                $sub_data.on('click', function() {
+                    self.$target.attr('data-animate-width',$progress_width.val()+'%');
+                    self.$target.attr('style','width:'+$progress_width.val()+'%;');   
+                });
+            }         
             return    
         },
     });
     options.registry.product_brand_slider = options.Class.extend({
 
         brand_slider_configure: function(type,value) {
-            self.$modal = $(qweb.render("theme_laze.brand_slider_block"));
-            self.$modal.appendTo('body');
-            self.$modal.modal();
-            var $brand_count = self.$modal.find("#brand-count"),
-                $cancel = self.$modal.find("#cancel"),
-                $sub_data = self.$modal.find("#sub_data"),
-                $brand_label = self.$modal.find("#brand-label");                           
-                $sub_data.on('click', function() {
-                    var type = '';
-                    self.$target.attr("data-brand-count", $brand_count.val());
-                    self.$target.attr("data-brand-label", $brand_label.val());                                                  
+            var self = this;
+            if(type == false || type == 'click'){
+                self.$modal = $(qweb.render("theme_laze.brand_slider_block"));
+                self.$modal.appendTo('body');
+                self.$modal.modal();
+                var $brand_count = self.$modal.find("#brand-count"),
+                    $cancel = self.$modal.find("#cancel"),
+                    $sub_data = self.$modal.find("#sub_data"),
+                    $brand_label = self.$modal.find("#brand-label");                           
+                    $sub_data.on('click', function() {
+                        var type = '';
+                        self.$target.attr("data-brand-count", $brand_count.val());
                         if ($brand_label.val()) {
                             type = $brand_label.val();
-                        } 
+                        }
                         else {
                             type = "Brands";
-                        }              
-                    self.$target.empty().append('<div class="container"><div class="shopper_brand_slider"><div class="col-md-12"><div class="seaction-head"><h1>' + type + '</h1> </div></div></div></div>');
-                });
-            
-            return
+                        }
+                        self.$target.attr("data-brand-label", type);
+                        self.$target.empty().append('<div class="container"><div class="shopper_brand_slider"><div class="col-md-12"><div class="seaction-head"><h1>' + type + '</h1> </div></div></div></div>');
+                    });
+            }    
+            return;
+        },
+        onBuilt: function () {
+            var self = this;
+            this._super();
+            this.brand_slider_configure("click").fail(function() {
+                self.getParent()._removeSnippet();
+            });
         },
         cleanForSave: function(){
-       // this.$target.empty();
-        $('.tqt_product_brand_slider').empty();
-	}
+            this.$target.empty();
+    	}
     });
 });
 

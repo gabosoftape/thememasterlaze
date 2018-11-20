@@ -53,9 +53,9 @@ class WebsiteSale(WebsiteSale):
                 ppg = PPG
 
             attrib_list = request.httprequest.args.getlist('attrib')
-            attrib_values = [map(int, v.split("-")) for v in attrib_list if v]
-            attributes_ids = set([v[0] for v in attrib_values])
-            attrib_set = set([v[1] for v in attrib_values])
+            attrib_values = [[int(x) for x in v.split("-")] for v in attrib_list if v]
+            attributes_ids = {v[0] for v in attrib_values}
+            attrib_set = {v[1] for v in attrib_values}
             domain = self._get_search_domain(search, category, attrib_values)
             product_designer_obj = request.env['product.brand']
             brand_ids = product_designer_obj.search([('id', '=', int(post.get('brand')))])

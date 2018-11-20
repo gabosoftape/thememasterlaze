@@ -1,4 +1,4 @@
-odoo.define('theme_watch.clean', function (require) {
+odoo.define('theme_laze.clean', function (require) {
 "use strict";
 
 var ajax = require('web.ajax');

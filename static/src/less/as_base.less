@@ -60,24 +60,15 @@ img{
 div.carousel {
 	.carousel-indicators {
 		li {
-			border:3px solid @as-theme;
+			border: 2px solid #323232;
 			width: 15px;
 			height: 15px;
 			margin: 0 10px 0 0;
-			transition: all 300ms ease-out 0s;
-			-o-transition: all 300ms ease-out 0s;
-			-webkit-transition: all 300ms ease-out 0s;
-			-moz-transition: all 300ms ease-out 0s;
-			.border-radius (@radius: 0);
-			transform: rotate(45deg);
-			-moz-transform: rotate(45deg);
-			-webkit-transform: rotate(45deg);
-			-o-transform: rotate(45deg);
 			box-shadow: none;
 			&:hover,
 			&.active {
-				background: @as-theme !important;
-				border: 1px solid @as-theme;
+				background: #323232;
+				border: 1px solid #323232;
 				margin: 0 10px 0 0;
 			}
 		}
@@ -163,8 +154,8 @@ div.carousel {
 	background-attachment: fixed;
 	text-align: center;
 	position: relative;
-	padding: 40px 0;
-	margin: 0 0 20px 0;
+	padding: 50px 0;
+	margin: 0 0 50px 0;
 		.container{
 			position: relative;
 			z-index: 1;
@@ -177,7 +168,7 @@ div.carousel {
 			color: @as-light;
 			span{
 				color: @as-light;
-				font-weight: 700;
+				font-weight: 500;
 			}
 		}
 		.breadcrumb{
@@ -254,9 +245,9 @@ div.carousel {
 		margin: 0 2px;
 		.transition(all, 0.5s, ease);
 		a {
-			border-radius:0 !important;
-			color: @as-body-color;
-			border-color: darken(@as-light, 60%);
+		    border-radius: 0 !important;
+		    color: #323232;
+		    border-color: #eee;
 			.transition(all, 0.5s, ease); 
 		}
 		&.active,
@@ -265,9 +256,9 @@ div.carousel {
 		&:hover,
 		&:focus{
 			a {
-				background: @as-theme !important;
-				border-color: @as-theme !important;
-				color: @as-light;
+			    background: #323232 !important;
+			    border-color: #323232 !important;
+			    color: #ffffff;
 			}
 		}
 	}
@@ -300,16 +291,6 @@ div.carousel {
 		float: none;
 		@media (max-width:767px){
 			margin-top: 25px !important;
-		}
-
-		.view-mode{
-			button {
-				border-radius: 3px;
-				&.active,
-				&:hover{
-					color:@as-theme;
-				}
-			}
 		}
 	}
 }
@@ -359,10 +340,12 @@ div.carousel {
 		}
 		button {
 			background: none;
-			border: 1px solid darken(@as-light, 10%);
+			border: 1px solid #eee;
 			padding: 5px 10px;
+			color: #969696;
+			&.active,
 			&:hover{
-				color: @as-theme;
+				color:#323232;
 			}
 		}
 	}
@@ -791,7 +774,7 @@ body #theme_customize_modal{
 					background: #a3d032;
 				}
 				.colorPreset3{
-					background: #37bc98;					
+					background: #ff6600;					
 				}
 				.colorPreset4{
 					background: #ff9c00;
@@ -830,7 +813,7 @@ body #theme_customize_modal{
 					background: #9E9E9E;
 				}
 				.colorPreset16{
-					background: #607D8B;
+					background: #ff796c;
 				}
 				.colorPreset17{
 					background: #FED879;
@@ -1066,4 +1049,3 @@ body ul.wizard{
 	    -ms-overflow-style: -ms-autohiding-scrollbar;
 	}
 }
-

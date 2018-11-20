@@ -824,44 +824,43 @@
 <!-- Policy Team  -->
 <template name="Policy Box" id="as_policy_box">
 	<section class="as-policy-box">
-            <div class="container">
-            	
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="pb-inner">
-								<i class="fa fa-plane"/>
-							<div class="text">
-								<h6>Free shiping</h6>
-								<span>On order over $100</span></div>
-							</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="pb-inner">
-								<i class="fa fa-headphones"/>
-							<div class="text">
-								<h6>Support online</h6>
-								<span>Call us: 000 000 000</span></div>
-							</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="pb-inner">
-								<i class="fa fa-tag"/>
-							<div class="text">
-								<h6>Discount</h6>
-								<span>5% on order over $190</span></div>
-							</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-xs-12">
-							<div class="pb-inner">
-								<i class="fa fa-refresh"/>
-							<div class="text">
-								<h6>Money back</h6>
-								<span>Guarantee</span></div>
-							</div>
-					</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-plane" />
+                    <div class="text">
+                        <h6>Free shiping</h6>
+                        <span>On order over $100</span></div>
                 </div>
             </div>
-        </section>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-headphones" />
+                    <div class="text">
+                        <h6>Support online</h6>
+                        <span>Call us: 000 000 000</span></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-tag" />
+                    <div class="text">
+                        <h6>Discount</h6>
+                        <span>5% on order over $190</span></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-refresh" />
+                    <div class="text">
+                        <h6>Money back</h6>
+                        <span>Guarantee</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
 </template>
 <!-- End -->
 
@@ -889,27 +888,40 @@
                 		</div>
                 	</div>
                 	<div class="col-md-8">
-			<form action="/website_form/crm.lead" method="post" data-model_name="crm.lead" data-success_page="/page/website_crm.contactus_thanks" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data">
-                		<div class="ascu-form">
-                			
-                			<div class="row">
-	                			<div class="col-md-6">
-									<input type="text" class="form-control o_website_form_input" name="contact_name" required="" placeholder="Your Name*"/>
-	                			</div>
-	                			<div class="col-md-6">
-									<input type="text" class="form-control o_website_form_input" name="email_from" required=""  placeholder="Your Email*"/>
-	                			</div>
-                			</div>
-                			<div class="row">
-                				<div class="col-md-12">
-							<textarea class="form-control o_website_form_input" name="description" required="" placeholder="Message*"></textarea>
-                				</div>
-                				<div class="col-md-12">
-                					<button class="creative-btn1" >Send</button>
-                				</div>
-                			</div>
-                		</div>
-					</form>
+<form action="/website_form/" method="post" data-model_name="crm.lead" data-success_page="/contactus-thank-you" class="s_website_form form-horizontal container-fluid mt32" enctype="multipart/form-data" data-editable-form="false">
+                      <input type="hidden" name="csrf_token" t-att-value="csrf_token  or request.csrf_token()"/>
+                      <div class="ascu-form">
+                        <div class="row">
+                          <div class="col-md-6">
+                           <input type="text" class="form-control o_website_form_input" name="contact_name" t-att-value="request.params.get('contact_name', '')" required="" placeholder="Name*"/>
+                          </div>
+                          <div class="col-md-6">
+                          <input type="text" class="form-control o_website_form_input" name="email_from" required="" t-att-value="request.params.get('email_from', '')" placeholder="Email*"/>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+<input type="text" class="form-control o_website_form_input" name="name" required="" t-att-value="request.params.get('name', '')" placeholder="Subject*"/>
+                          </div>
+                          <div class="col-md-6">
+<input type="text" class="form-control o_website_form_input" name="phone" t-att-value="request.params.get('phone', '')" placeholder="Phone"/>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12">
+                           <textarea class="form-control o_website_form_input" name="description" required="" placeholder="Message*"></textarea>
+                          </div>
+                          <div class="col-md-12">
+		                    <div class="form-group">
+		                        <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+		                            <span class="btn btn-primary btn-lg o_website_form_send">Send Message</span>
+		                            <span id="o_website_form_result"></span>
+		                        </div>
+		                    </div>
+                          </div>
+                        </div>
+                      </div>
+            </form>
                 	</div>
                 </div>
             </div>
@@ -1086,7 +1098,7 @@
     <xpath expr="//div[@id='snippet_options']" position="inside">
         <div data-js='theme_progressbar'
             data-selector=".progress-bar-theme .progress .progress-bar">
-            <li data-change_progress="" data-no-preview="true"><a>Change Progress</a></li>
+            <li data-change_progress=""><a>Change Progress</a></li>
         </div>
     </xpath>
   </template>
@@ -1410,7 +1422,7 @@
 
             <div class="panel-group" role="tablist" id="accordion">
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" data-toggle="collapse">
+                    <div class="panel-heading collapsed" role="tab" data-toggle="collapse">
                         <h4 class="panel-title">
                             Collapsible Group Item #1
                         </h4>
@@ -1422,7 +1434,7 @@ Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richa
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" data-toggle="collapse">
+                    <div class="panel-heading collapsed" role="tab" data-toggle="collapse">
                         <h4 class="panel-title">
                             Collapsible Group Item #2
                         </h4>
@@ -1434,7 +1446,7 @@ Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richa
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading" role="tab" data-toggle="collapse">
+                    <div class="panel-heading collapsed" role="tab" data-toggle="collapse">
                         <h4 class="panel-title">
                             Collapsible Group Item #3
                         </h4>
@@ -1450,8 +1462,15 @@ Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richa
           </div>
         </div>
     </section>
-<!-- End -->
 </template>
+<template id="options_accordion" inherit_id="website.snippets" name="Customize Options">
+  <xpath expr="//div[@id='snippet_options']" position="inside">
+      <div data-js='accordion_option1'
+          data-selector=".accordion-option1">
+      </div>
+  </xpath>
+</template>
+<!-- End -->
 
 <template id="accordion_option2" name="Accordion 2">
 <div class="s_well_content clearfix accordion-option2">
@@ -1494,6 +1513,13 @@ Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richa
     </div>
   </div>
 </div>
+</template>
+<template id="options_accordion2" inherit_id="website.snippets" name="Customize Options">
+  <xpath expr="//div[@id='snippet_options']" position="inside">
+      <div data-js='accordion_option2'
+          data-selector=".accordion-option2">
+      </div>
+  </xpath>
 </template>
 <!-- End -->
 
@@ -1538,6 +1564,13 @@ Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richa
     </div>
   </div>
 </div>
+</template>
+<template id="options_accordion3" inherit_id="website.snippets" name="Customize Options">
+  <xpath expr="//div[@id='snippet_options']" position="inside">
+      <div data-js='accordion_option3'
+          data-selector=".accordion-option3">
+      </div>
+  </xpath>
 </template>
 <!-- End -->
 
@@ -2322,128 +2355,345 @@ Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richa
 
 <!-- Creative Home Pages End -->
 
+<!-- V2 -->
+<!-- Slider with Banner -->
+<template id="home_slider-v2" name="Home Slider V2">
+  <section class="as-home-slider-v2">
+    <div id="as_home_slider02" class="carousel slide" data-ride="carousel" data-interval="8000">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#as_home_slider02" data-slide-to="0" class="active"></li>
+          <li data-target="#as_home_slider02" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active item-01">
+              <div class="container">
+                <div class="row">
+                  <div class="hs-cols col-md-6">
+                    <div class="hs-text">
+                      <label>New Collection</label>
+                      <h2>Winter Sale Get 30% Off<br/> On All New Products</h2>
+                      <a href="#" class="hs-link">Shop Now</a>
+                    </div>
+                  </div> <!-- col -->
+
+                  <div class="hs-cols col-md-6">
+                    <img src="/theme_laze/static/src/img/laze-banner-v2-1.png" alt="" />
+                  </div> <!-- col -->
+                </div>
+                
+              </div>
+            </div><!--/.item-->
+            <div class="item item-02">
+                <div class="container">
+                  <div class="row">
+                    <div class="hs-cols col-md-6">
+                      <div class="hs-text">
+                        <label>New Collection</label>
+                        <h2>Winter Sale Get 30% Off<br/> On All New Products</h2>
+                        <a href="#" class="hs-link">Shop Now</a>
+                      </div>
+                    </div> <!-- col -->
+
+                    <div class="hs-cols col-md-6">
+                      <img src="/theme_laze/static/src/img/laze-banner-v2-2.png" alt="" />
+                    </div> <!-- col -->
+                  </div>
+                </div>
+            </div><!--/.item-->
+        </div><!--/.carousel-inner-->
+    </div>  
+  </section>
+</template>
+<!-- End -->
+
+<template id="as_promo_v2" name="Promo Block">
+  <section class="as-promo-v2">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="acss-box">
+            <div class="acss-img">
+              <a href="#">
+                <img src="/theme_laze/static/src/img/laze-banner-v2-3.png" />
+              </a>
+            </div>
+            <div class="acss-text">
+                <div class="title">New Collections</div>
+                <div class="link">
+                  <a href="#">Shop Now</a>
+                </div>
+            </div>
+          </div>
+        </div> <!-- col -->
+        <div class="col-md-4">
+          <div class="acss-box">
+            <div class="acss-img">
+              <a href="#">
+                <img src="/theme_laze/static/src/img/laze-banner-v2-4.png" />
+              </a>
+            </div>
+            <div class="acss-text">
+                <div class="title">New Collections</div>
+                <div class="link">
+                  <a href="#">Shop Now</a>
+                </div>
+            </div>
+          </div>
+        </div> <!-- col -->
+
+        <div class="col-md-4">
+          <div class="acss-box">
+            <div class="acss-img">
+              <a href="#">
+                <img src="/theme_laze/static/src/img/laze-banner-v2-5.png" />
+              </a>
+            </div>
+            <div class="acss-text">
+                <div class="title">New Collections</div>
+                <div class="link">
+                  <a href="#">Shop Now</a>
+                </div>
+            </div>
+          </div>
+        </div><!-- col -->
+      </div> <!-- row -->
+    </div>
+  </section>
+</template>
+
+
+<template id="as_promo_v2_01" name="Promo With Banner">
+  <section class="as-promo-v2-01" style="background-image:url(/theme_laze/static/src/img/laze-banner-v2-6.png);">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 aspro-col">
+          <div class="aspro-text">
+            <label>New Collection</label>
+            <h2>Winter Sale Get 30% Off On All New Products</h2>
+            <a href="#" class="hs-link o_default_snippet_text">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<!-- Policy Team  -->
+<template name="Policy Box V2" id="as_policy_box_v2">
+  <section class="as-policy-box-v1">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-plane" />
+                    <div class="text">
+                        <h6>Free Shiping</h6>
+                        <span>On order over $100</span></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-headphones" />
+                    <div class="text">
+                        <h6>Support Online</h6>
+                        <span>Call us: 000 000 000</span></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-tag" />
+                    <div class="text">
+                        <h6>Discount</h6>
+                        <span>5% on order over $190</span></div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="pb-inner">
+                    <i class="fa fa-refresh" />
+                    <div class="text">
+                        <h6>Money Back</h6>
+                        <span>100% money back guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+</template>
+<!-- End -->
+
+<!-- Testimonial -->
+  <template name="Testimonial" id="testimonial_v2">
+    <section class="testimonial-section-v2">
+      <div class="container">
+        <div class="seaction-head">
+          <h2>Testimonial</h2>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="testimonial-v2">
+              <i class="fa fa-quote-right"/>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="t-name">
+                <label>James More</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-v2">
+              <i class="fa fa-quote-right"/>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="t-name">
+                <label>James More</label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="testimonial-v2">
+              <i class="fa fa-quote-right"/>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <div class="t-name">
+                <label>James More</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </template>
+<!-- end -->
+<!-- / -->
+
 
 <template id="add_snippets" inherit_id="website.snippets" name="Add Custom snippet">
   <xpath expr="//div[@id='snippet_structure']//div[hasclass('o_panel_body')]" position="inside">
-  <t t-snippet="theme_laze.theme_slider"
-       t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
-  <t t-snippet="theme_laze.home_slider01"
-       t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
-  <t t-snippet="theme_laze.animated_slider"
-       t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
-  <t t-snippet="theme_laze.home_slider02"
-       t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
-  
-  <t t-snippet="theme_laze.calcsn_promo"
-       t-thumbnail="/theme_laze/static/src/icon/ads-blocks.png"/>
-  <t t-snippet="theme_laze.banner_two"
-       t-thumbnail="/theme_laze/static/src/icon/ads-two.png"/>
-  <t t-snippet="theme_laze.custom_tabs_1"
-       t-thumbnail="/theme_laze/static/src/icon/custom-tabs-1.png"/>
-  <t t-snippet="theme_laze.custom_tabs_2"
-       t-thumbnail="/theme_laze/static/src/icon/custom-tabs-1.png"/>
+    <t t-snippet="theme_laze.theme_slider"
+         t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
+    <t t-snippet="theme_laze.home_slider01"
+         t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
+    <t t-snippet="theme_laze.home_slider-v2"
+         t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
+    <t t-snippet="theme_laze.animated_slider"
+         t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
+    <t t-snippet="theme_laze.home_slider02"
+         t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
+    
+    <t t-snippet="theme_laze.calcsn_promo"
+         t-thumbnail="/theme_laze/static/src/icon/ads-blocks.png"/>
+    <t t-snippet="theme_laze.as_promo_v2"
+         t-thumbnail="/theme_laze/static/src/icon/ads-two.png"/>
 
-  <t t-snippet="theme_laze.client_slider"
-       t-thumbnail="/theme_laze/static/src/icon/testimonial.png"/>
-  <t t-snippet="theme_laze.client_slider1"
-       t-thumbnail="/theme_laze/static/src/icon/testimonial.png"/>
-  <t t-snippet="theme_laze.parallax_box"
-       t-thumbnail="/theme_laze/static/src/icon/as-parallax-1.png"/>
-  <t t-snippet="theme_laze.progress_bar"
-       t-thumbnail="/theme_laze/static/src/icon/progress_bar.png"/>       
-  <t t-snippet="theme_laze.col_3_boxs"
-       t-thumbnail="/theme_laze/static/src/icon/services.jpg"/>
-  <t t-snippet="theme_laze.col_4_boxs"
-       t-thumbnail="/theme_laze/static/src/icon/services.jpg"/>
-  <t t-snippet="theme_laze.feature_left_img"
-       t-thumbnail="/theme_laze/static/src/icon/ads-left.png"/>
-  <t t-snippet="theme_laze.left_bgimg"
-       t-thumbnail="/theme_laze/static/src/icon/as_left_img.png"/>
-  <t t-snippet="theme_laze.feature_left_box"
-       t-thumbnail="/theme_laze/static/src/icon/banner.jpg"/>
-  <t t-snippet="theme_laze.services_boxs"
-       t-thumbnail="/theme_laze/static/src/icon/services.jpg"/>
-  <t t-snippet="theme_laze.speciality_boxs"
-       t-thumbnail="/theme_laze/static/src/icon/as_content_feature.png"/>
-  <t t-snippet="theme_laze.our_team"
-       t-thumbnail="/theme_laze/static/src/icon/our-team.jpg"/>
-  <t t-snippet="theme_laze.as_policy_box"
-       t-thumbnail="/theme_laze/static/src/icon/policy.png"/>
-  
-  <t t-snippet="theme_laze.contact_usa"
-       t-thumbnail="/theme_laze/static/src/icon/contact_us.png"/>
-  <t t-snippet="theme_laze.as_price_tables"
-       t-thumbnail="/theme_laze/static/src/icon/as_price_table3.png"/> 
-  <t t-snippet="theme_laze.seaction_head"
-       t-thumbnail="/theme_laze/static/src/icon/as-desc-head.png"/>
+    <t t-snippet="theme_laze.as_promo_v2_01"
+         t-thumbnail="/theme_laze/static/src/icon/ads-two.png"/>
+    <t t-snippet="theme_laze.banner_two"
+         t-thumbnail="/theme_laze/static/src/icon/ads-two.png"/>
+    <t t-snippet="theme_laze.custom_tabs_1"
+         t-thumbnail="/theme_laze/static/src/icon/custom-tabs-1.png"/>
+    <t t-snippet="theme_laze.custom_tabs_2"
+         t-thumbnail="/theme_laze/static/src/icon/custom-tabs-1.png"/>
 
-  <t t-snippet="theme_laze.as_home_banner"
-       t-thumbnail="/theme_laze/static/src/icon/as_home_banner.png"/>
-  <t t-snippet="theme_laze.as_about"
-       t-thumbnail="/theme_laze/static/src/icon/as_about.png"/>
-  <t t-snippet="theme_laze.progress_bar_a"
-       t-thumbnail="/theme_laze/static/src/icon/progress_bar_a.png"/>
-  <t t-snippet="theme_laze.as_we_offer"
-       t-thumbnail="/theme_laze/static/src/icon/as_we_offer.png"/>
-  <t t-snippet="theme_laze.as_choose_us"
-       t-thumbnail="/theme_laze/static/src/icon/as_choose_us.png"/>
-  <t t-snippet="theme_laze.as_packages"
-       t-thumbnail="/theme_laze/static/src/icon/as_packages.png"/>
-  <t t-snippet="theme_laze.accordion_option1"
-       t-thumbnail="/theme_laze/static/src/icon/accordion_option1.png"/>   
-  <t t-snippet="theme_laze.accordion_option2" 
-    t-thumbnail="/theme_laze/static/src/icon/accordion_option1.png"/>
-  <t t-snippet="theme_laze.accordion_option3" 
-    t-thumbnail="/theme_laze/static/src/icon/accordion_option1.png"/>
-	
-  <t t-snippet="theme_laze.as_stats_section"
-       t-thumbnail="/theme_laze/static/src/icon/as_stats_section.png"/>
-   
-  <t t-snippet="theme_laze.as_stats_section-bg"
-       t-thumbnail="/theme_laze/static/src/icon/as_stats_section.png"/>
+    <t t-snippet="theme_laze.client_slider"
+         t-thumbnail="/theme_laze/static/src/icon/testimonial.png"/>
+    <t t-snippet="theme_laze.client_slider1"
+         t-thumbnail="/theme_laze/static/src/icon/testimonial.png"/>
+    <t t-snippet="theme_laze.testimonial_v2"
+         t-thumbnail="/theme_laze/static/src/icon/testimonial.png"/>
+    <t t-snippet="theme_laze.parallax_box"
+         t-thumbnail="/theme_laze/static/src/icon/as-parallax-1.png"/>
+    <t t-snippet="theme_laze.progress_bar"
+         t-thumbnail="/theme_laze/static/src/icon/progress_bar.png"/>       
+    <t t-snippet="theme_laze.col_3_boxs"
+         t-thumbnail="/theme_laze/static/src/icon/services.jpg"/>
+    <t t-snippet="theme_laze.col_4_boxs"
+         t-thumbnail="/theme_laze/static/src/icon/services.jpg"/>
+    <t t-snippet="theme_laze.feature_left_img"
+         t-thumbnail="/theme_laze/static/src/icon/ads-left.png"/>
+    <t t-snippet="theme_laze.left_bgimg"
+         t-thumbnail="/theme_laze/static/src/icon/as_left_img.png"/>
+    <t t-snippet="theme_laze.feature_left_box"
+         t-thumbnail="/theme_laze/static/src/icon/banner.jpg"/>
+    <t t-snippet="theme_laze.services_boxs"
+         t-thumbnail="/theme_laze/static/src/icon/services.jpg"/>
+    <t t-snippet="theme_laze.speciality_boxs"
+         t-thumbnail="/theme_laze/static/src/icon/as_content_feature.png"/>
+    <t t-snippet="theme_laze.our_team"
+         t-thumbnail="/theme_laze/static/src/icon/our-team.jpg"/>
+    <t t-snippet="theme_laze.as_policy_box"
+         t-thumbnail="/theme_laze/static/src/icon/policy.png"/>
+    <t t-snippet="theme_laze.as_policy_box_v2"
+         t-thumbnail="/theme_laze/static/src/icon/policy.png"/>
+    
+    <t t-snippet="theme_laze.contact_usa"
+         t-thumbnail="/theme_laze/static/src/icon/contact_us.png"/>
+    <t t-snippet="theme_laze.as_price_tables"
+         t-thumbnail="/theme_laze/static/src/icon/as_price_table3.png"/> 
+    <t t-snippet="theme_laze.seaction_head"
+         t-thumbnail="/theme_laze/static/src/icon/as-desc-head.png"/>
 
-  <t t-snippet="theme_laze.as_action_box"
-       t-thumbnail="/theme_laze/static/src/icon/as_percent_button.png"/>
-  <t t-snippet="theme_laze.as_action_box1"
-       t-thumbnail="/theme_laze/static/src/icon/as_percent_button.png"/>
+    <t t-snippet="theme_laze.as_home_banner"
+         t-thumbnail="/theme_laze/static/src/icon/as_home_banner.png"/>
+    <t t-snippet="theme_laze.as_about"
+         t-thumbnail="/theme_laze/static/src/icon/as_about.png"/>
+    <t t-snippet="theme_laze.progress_bar_a"
+         t-thumbnail="/theme_laze/static/src/icon/progress_bar_a.png"/>
+    <t t-snippet="theme_laze.as_we_offer"
+         t-thumbnail="/theme_laze/static/src/icon/as_we_offer.png"/>
+    <t t-snippet="theme_laze.as_choose_us"
+         t-thumbnail="/theme_laze/static/src/icon/as_choose_us.png"/>
+    <t t-snippet="theme_laze.as_packages"
+         t-thumbnail="/theme_laze/static/src/icon/as_packages.png"/>
+    <t t-snippet="theme_laze.accordion_option1"
+         t-thumbnail="/theme_laze/static/src/icon/accordion_option1.png"/>   
+  	
+    <t t-snippet="theme_laze.as_stats_section"
+         t-thumbnail="/theme_laze/static/src/icon/as_stats_section.png"/>
+     
+    <t t-snippet="theme_laze.as_stats_section-bg"
+         t-thumbnail="/theme_laze/static/src/icon/as_stats_section.png"/>
 
-  <t t-snippet="theme_laze.as_row"
-       t-thumbnail="/theme_laze/static/src/icon/as_row.png"/>
-  <t t-snippet="theme_laze.as_space"
-       t-thumbnail="/theme_laze/static/src/icon/as_space.png"/>
+    <t t-snippet="theme_laze.as_action_box"
+         t-thumbnail="/theme_laze/static/src/icon/as_percent_button.png"/>
+    <t t-snippet="theme_laze.as_action_box1"
+         t-thumbnail="/theme_laze/static/src/icon/as_percent_button.png"/>
 
-  <t t-snippet="theme_laze.theme_slider_creative"
-       t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
-  <t t-snippet="theme_laze.creative_aboutus"
-       t-thumbnail="/theme_laze/static/src/icon/creative_aboutus.jpg"/>
-  <t t-snippet="theme_laze.process_content"
-       t-thumbnail="/theme_laze/static/src/icon/process_content.jpg"/>
-  <t t-snippet="theme_laze.portfolio_creative"
-       t-thumbnail="/theme_laze/static/src/icon/portfolio_creative.jpg"/>
+    <t t-snippet="theme_laze.as_row"
+         t-thumbnail="/theme_laze/static/src/icon/as_row.png"/>
+    <t t-snippet="theme_laze.as_space"
+         t-thumbnail="/theme_laze/static/src/icon/as_space.png"/>
 
-  <t t-snippet="theme_laze.creative_presentation"
-       t-thumbnail="/theme_laze/static/src/icon/creative_presentation.jpg"/>
-  <t t-snippet="theme_laze.give_call"
-       t-thumbnail="/theme_laze/static/src/icon/give_call.jpg"/>
+    <t t-snippet="theme_laze.theme_slider_creative"
+         t-thumbnail="/theme_laze/static/src/icon/home_slider01.png"/>
+    <t t-snippet="theme_laze.creative_aboutus"
+         t-thumbnail="/theme_laze/static/src/icon/creative_aboutus.jpg"/>
+    <t t-snippet="theme_laze.process_content"
+         t-thumbnail="/theme_laze/static/src/icon/process_content.jpg"/>
+    <t t-snippet="theme_laze.portfolio_creative"
+         t-thumbnail="/theme_laze/static/src/icon/portfolio_creative.jpg"/>
 
-  <t t-snippet="theme_laze.clinic_col_3_boxs"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_col_3_boxs.jpg"/>
-  <t t-snippet="theme_laze.clinic_about_us"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_about_us.jpg"/>
-  <t t-snippet="theme_laze.clinic_offer"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_offer.jpg"/>
-  <t t-snippet="theme_laze.clinic_specialize"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_specialize.jpg"/>
-  <t t-snippet="theme_laze.clinic_choose_us"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_choose_us.jpg"/>
-  <t t-snippet="theme_laze.clinic_served"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_served.jpg"/>
-  <t t-snippet="theme_laze.clinic_team"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_team.jpg"/>
-  <t t-snippet="theme_laze.clinic_slider"
-       t-thumbnail="/theme_laze/static/src/icon/clinic_slider.jpg"/>
+    <t t-snippet="theme_laze.creative_presentation"
+         t-thumbnail="/theme_laze/static/src/icon/creative_presentation.jpg"/>
+    <t t-snippet="theme_laze.give_call"
+         t-thumbnail="/theme_laze/static/src/icon/give_call.jpg"/>
 
-</xpath>
+    <t t-snippet="theme_laze.clinic_col_3_boxs"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_col_3_boxs.jpg"/>
+    <t t-snippet="theme_laze.clinic_about_us"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_about_us.jpg"/>
+    <t t-snippet="theme_laze.clinic_offer"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_offer.jpg"/>
+    <t t-snippet="theme_laze.clinic_specialize"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_specialize.jpg"/>
+    <t t-snippet="theme_laze.clinic_choose_us"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_choose_us.jpg"/>
+    <t t-snippet="theme_laze.clinic_served"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_served.jpg"/>
+    <t t-snippet="theme_laze.clinic_team"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_team.jpg"/>
+    <t t-snippet="theme_laze.clinic_slider"
+         t-thumbnail="/theme_laze/static/src/icon/clinic_slider.jpg"/>
+
+  </xpath>
 </template>
 
 
@@ -2591,25 +2841,29 @@ Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richa
 
 <template id="add_snippets_content" inherit_id="website.snippets" name="Add Custom snippet">
   <xpath expr="//div[@id='snippet_content']//div[hasclass('o_panel_body')]" position="inside">
-  <t t-snippet="theme_laze.as_button" 
-    t-thumbnail="/theme_laze/static/src/icon/as_button1.png"/>
-  <t t-snippet="theme_laze.as_button1" 
-    t-thumbnail="/theme_laze/static/src/icon/as_button1.jpg"/>
-  <t t-snippet="theme_laze.as_button2" 
-    t-thumbnail="/theme_laze/static/src/icon/as_button2.jpg"/>
-  <t t-snippet="theme_laze.as_list01" 
-    t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
-  <t t-snippet="theme_laze.as_list02" 
-    t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
-  <t t-snippet="theme_laze.as_list03" 
-    t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
-  <t t-snippet="theme_laze.as_list04" 
-    t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
-  <t t-snippet="theme_laze.as_list05" 
-    t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
-  <t t-snippet="theme_laze.as_list06" 
-    t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
-</xpath>
+    <t t-snippet="theme_laze.accordion_option2" 
+      t-thumbnail="/theme_laze/static/src/icon/accordion_option1.png"/>
+    <t t-snippet="theme_laze.accordion_option3" 
+      t-thumbnail="/theme_laze/static/src/icon/accordion_option1.png"/>
+    <t t-snippet="theme_laze.as_button" 
+      t-thumbnail="/theme_laze/static/src/icon/as_button1.png"/>
+    <t t-snippet="theme_laze.as_button1" 
+      t-thumbnail="/theme_laze/static/src/icon/as_button1.jpg"/>
+    <t t-snippet="theme_laze.as_button2" 
+      t-thumbnail="/theme_laze/static/src/icon/as_button2.jpg"/>
+    <t t-snippet="theme_laze.as_list01" 
+      t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
+    <t t-snippet="theme_laze.as_list02" 
+      t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
+    <t t-snippet="theme_laze.as_list03" 
+      t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
+    <t t-snippet="theme_laze.as_list04" 
+      t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
+    <t t-snippet="theme_laze.as_list05" 
+      t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
+    <t t-snippet="theme_laze.as_list06" 
+      t-thumbnail="/theme_laze/static/src/icon/as_list01.jpg"/>
+  </xpath>
 </template>
     <template id="website_s_Well_options" inherit_id="website.snippet_options" name="Twitter Options">
         <xpath expr="//div" position="after">
